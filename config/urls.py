@@ -16,9 +16,25 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.shortcuts import render, redirect
+from django.http import Http404
+from fake_db import user_db
+
+
+def user_list(request):
+    return render(request, 'user_list.html', {'data': user_db})
+
+
+def get_user(request, user_id):
+    try:
+        context = {"data": user_db[user_id], "user_id": user_id}
+    except KeyError:
+        return Http404()
+    return render(request, 'user_info.html', context)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('users/', users),
+    path('users/', user_list),
     path('users/<int:user_id>/', get_user),
 ]
