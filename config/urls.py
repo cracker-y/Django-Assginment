@@ -19,6 +19,7 @@ from django.urls import path
 from django.shortcuts import render, redirect
 from django.http import Http404
 from fake_db import user_db
+from todo import views
 
 
 def user_list(request):
@@ -33,8 +34,14 @@ def get_user(request, user_id):
     return render(request, 'user_info.html', context)
 
 
+def todo_list(request):
+    return render(request, '')
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', user_list),
     path('users/<int:user_id>/', get_user),
+    path('todo/', views.todo_list),
+    path('todo/<int:todo_id>/', views.todo_info),
 ]
