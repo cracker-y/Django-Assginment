@@ -7,7 +7,7 @@ def todo_list(request):
     ctodo_list = TodoList.objects.all().values_list('id', 'title')
     result = [{'id': todo[0], 'title': todo[1]} for todo in ctodo_list]
     context = {'data': result}
-    return render(request, 'todo/ctodo_list.html', context)
+    return render(request, 'ctodo_list.html', context)
 
 
 def todo_info(request, todo_id):
@@ -21,4 +21,4 @@ def todo_info(request, todo_id):
 
     }
     context = {'data': info}
-    return render(request, 'todo/ctodo_info.html', context)
+    return render(request, 'ctodo_info.html', context)
