@@ -299,3 +299,4 @@ pip-selfcheck.json
 # End of https://www.toptal.com/developers/gitignore/api/pycharm,django,venv
 
 fake_db.py
+.idea/
